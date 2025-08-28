@@ -1,0 +1,161 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+    color: #e0e0e0;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Patrón sutil tipo circuito sobre el gradiente */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/circuit-board.png');
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: white;
+}
+
+.hero h1, .hero p {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .btn {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Tarjetas con fondo tecnológico y borde brillante */
+.card {
+    background: rgba(20, 30, 48, 0.92) !important;
+    border: 1.5px solid #00fff7 !important;
+    border-radius: 18px;
+    box-shadow: 0 0 20px #00fff733;
+    color: #e0e0e0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 40px #00fff7aa;
+}
+
+/* Estilo tecnológico para los li de listas importantes */
+.list-group-item,
+#about li {
+    background: rgba(20, 30, 48, 0.85) !important;
+    border: 1px solid #00fff7 !important;
+    color: #e0e0e0 !important;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 10px #00fff733;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover,
+#about li:hover {
+    background: rgba(0, 255, 247, 0.1) !important;
+    box-shadow: 0 0 20px #00fff7;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .bg-light {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar {
+    background-color: #000 !important;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    border: none;
+}
+
+/* Estilos del formulario */
+.field {
+    margin-bottom: 1rem; /* Coincide con mb-3 */
+}
+
+#form-message.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#form-message.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+    .hero { height: 80vh; }
+    h1 { font-size: 2.5rem; }
+}
+
+.social-link i {
+    filter: drop-shadow(0 0 6px #00fff7);
+}
+.social-link:hover {
+    color: #00fff7 !important;
+    filter: drop-shadow(0 0 12px #00fff7);
+}
+
+/* Efecto glow en todos los títulos, menos los p */
+h1, h2, h3, h4,
+#about li {
+    text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+    letter-spacing: 1px;
+}
+
+/* Elimina el efecto glow de los párrafos */
+p {
+    text-shadow: none;
+    letter-spacing: normal;
+}
+
+.btn-primary, .btn-outline-light {
+    box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+    border-radius: 30px;
+    border-width: 2px;
+    transition: box-shadow 0.2s;
+}
+.btn-primary:hover, .btn-outline-light:hover {
+    box-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7;
+}
+
+.bg-light {
+    background: transparent !important;
+    color: #e0e0e0 !important;
+}
