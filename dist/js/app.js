@@ -68,10 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dark Mode Toggle
     const toggle = document.getElementById('dark-mode-toggle');
     if (toggle) {
+        // Inicia en modo oscuro
+        document.body.classList.add('dark-mode');
+
         toggle.addEventListener('click', () => {
             console.log('Dark mode toggle clicado.');
             document.body.classList.toggle('dark-mode');
-            toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            // Cambia el icono del botón según el modo
+            const icon = toggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'bi bi-moon';
+            } else {
+                icon.className = 'bi bi-lightbulb';
+            }
         });
     } else {
         console.error('Error: Botón de dark mode con ID "dark-mode-toggle" no encontrado.');

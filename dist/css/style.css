@@ -20,7 +20,7 @@ body::before {
 
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, #007bff, #00c6ff);
+    background: linear-gradient(135deg, #0f2027 0%, #232526 100%);
     color: white;
 }
 
@@ -95,6 +95,17 @@ body.dark-mode .card {
     border: none;
 }
 
+/* Desactiva el glow/neón en modo oscuro */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode #about li {
+    text-shadow: none !important;
+}
+
 /* Estilos del formulario */
 .field {
     margin-bottom: 1rem; /* Coincide con mb-3 */
@@ -158,4 +169,56 @@ p {
 .bg-light {
     background: transparent !important;
     color: #e0e0e0 !important;
+}
+
+/* Estrellas animadas solo en modo oscuro */
+body.dark-mode::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    background: url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><circle cx='10' cy='10' r='1.5' fill='white' opacity='0.8'/><circle cx='60' cy='40' r='1' fill='white' opacity='0.7'/><circle cx='80' cy='80' r='1.2' fill='white' opacity='0.6'/><circle cx='30' cy='70' r='0.8' fill='white' opacity='0.5'/><circle cx='90' cy='20' r='1.1' fill='white' opacity='0.7'/></svg>");
+    background-repeat: repeat;
+    animation: stars-move 60s linear infinite;
+    opacity: 0.25;
+}
+
+@keyframes stars-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 2000;
+    background: #00fff7;
+    color: #232526;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+    box-shadow: 0 0 16px #00fff7, 0 0 32px #00fff7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+
+#dark-mode-toggle:hover {
+    background: #232526;
+    color: #00fff7;
+    box-shadow: 0 0 32px #00fff7, 0 0 64px #00fff7;
+}
+
+/* Elimina el glow del botón en modo oscuro */
+body.dark-mode #dark-mode-toggle {
+    background: #232526;
+    color: #00fff7;
+    box-shadow: none;
+    border: 1.5px solid #00fff7;
 }
