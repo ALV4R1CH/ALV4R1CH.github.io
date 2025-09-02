@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     console.log('1. DOMContentLoaded disparado. Inicializando script...');
 
     // Verificar si EmailJS está cargado
@@ -8,60 +8,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.log('2. EmailJS SDK cargado correctamente.');
 
+    const btn = document.getElementById('button');
     const form = document.getElementById('form');
-    if (!form) {
-        console.error('Error: Formulario con ID "form" no encontrado.');
+    const messageDiv = document.getElementById('form-message');
+
+    if (!form || !btn) {
+        console.error('Error: Formulario con ID "form" o botón con ID "button" no encontrado.');
         return;
     }
-    console.log('3. Formulario encontrado:', form);
+    console.log('3. Formulario y botón encontrados:', form, btn);
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
         console.log('4. Evento submit disparado.');
 
-        const name = document.getElementById('name').value;
-        const time = document.getElementById('time').value;
-        const message = document.getElementById('message').value;
-        const formMessage = document.getElementById('form-message');
-        const submitButton = document.getElementById('button');
+        btn.value = 'Enviando...';
 
-        if (!name || !time || !message) {
-            console.log('5. Validación fallida: campos incompletos.');
-            formMessage.classList.remove('d-none', 'alert-success');
-            formMessage.classList.add('alert', 'alert-danger');
-            formMessage.textContent = 'Completa todos los campos.';
-            return;
-        }
-        console.log('5. Validación pasada. Enviando datos:', { from_name: name, time, message });
+        const serviceID = 'default_service'; // Cambia si usas otro Service ID
+        const templateID = 'template_xwnwop7';
 
-        submitButton.disabled = true;
-        submitButton.value = 'Enviando...';
-        formMessage.classList.add('d-none');
-        console.log('6. Deshabilitando botón y mostrando estado de envío.');
-
-        emailjs.send('service_ockyvsq', 'template_xwnwop7', {
-            from_name: name,
-            time: time,
-            message: message
-        }).then(
-            (response) => {
-                console.log('7. Correo enviado con éxito:', response);
-                formMessage.classList.remove('d-none', 'alert-danger');
-                formMessage.classList.add('alert', 'alert-success');
-                formMessage.textContent = `Gracias, ${name}! Tu mensaje ha sido enviado.`;
+        // El tercer parámetro debe ser el elemento del formulario
+        emailjs.sendForm(serviceID, templateID, form)
+            .then(() => {
+                btn.value = 'Enviar Correo';
+                messageDiv.innerHTML = '<div class="alert alert-success">¡Mensaje enviado correctamente!</div>';
                 form.reset();
-                submitButton.disabled = false;
-                submitButton.value = 'Enviar Correo';
-            },
-            (error) => {
-                console.error('7. Error al enviar el correo:', error);
-                formMessage.classList.remove('d-none', 'alert-success');
-                formMessage.classList.add('alert', 'alert-danger');
-                formMessage.textContent = `Error: ${error.text || 'No se pudo enviar el mensaje'}`;
-                submitButton.disabled = false;
-                submitButton.value = 'Enviar Correo';
-            }
-        );
+            }, (err) => {
+                btn.value = 'Enviar Correo';
+                messageDiv.innerHTML = '<div class="alert alert-danger">Error al enviar el mensaje. Intenta de nuevo.</div>';
+                console.error(err);
+            });
     });
     console.log('4. Evento submit registrado en el formulario.');
 
@@ -69,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('dark-mode-toggle');
     if (toggle) {
         // Inicia en modo oscuro
-        document.body.classList.add('dark-mode');
+
 
         toggle.addEventListener('click', () => {
             console.log('Dark mode toggle clicado.');
