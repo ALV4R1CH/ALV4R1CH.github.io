@@ -43,6 +43,33 @@ body::before {
     60% { transform: translateY(-5px); }
 }
 
+/* Estilo de la barra de navegación */
+.navbar {
+    background: rgba(15, 32, 39, 0.85) !important; /* Fondo oscuro semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto de cristal esmerilado */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+    border-bottom: 1px solid rgba(0, 255, 247, 0.2); /* Borde inferior sutil con color de acento */
+}
+
+.nav-link {
+    font-size: 1.1rem; /* Aumenta el tamaño de los enlaces */
+    padding: 0.5rem 1rem !important; /* Ajusta el padding para más espacio */
+    transition: color 0.3s, text-shadow 0.3s;
+    text-transform: uppercase;
+    font-weight: 600; /* Un poco más de grosor */
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand {
+    font-size: 1.75rem; /* Aumenta el tamaño de la marca */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #00fff7 !important; /* Color de acento al pasar el mouse o estar activo */
+    text-shadow: 0 0 10px #00fff7;
+}
+
 /* Tarjetas con fondo tecnológico y borde brillante */
 .card {
     background: rgba(20, 30, 48, 0.92) !important;
@@ -84,10 +111,6 @@ body.dark-mode {
 
 body.dark-mode .bg-light {
     background-color: #1e1e1e !important;
-}
-
-body.dark-mode .navbar {
-    background-color: #000 !important;
 }
 
 body.dark-mode .card {
@@ -145,7 +168,8 @@ body.dark-mode #about li {
 
 /* Efecto glow en todos los títulos, menos los p */
 h1, h2, h3, h4,
-#about li {
+.navbar-brand,
+#about li, .card-title {
     text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
     letter-spacing: 1px;
 }
