@@ -243,6 +243,10 @@ p {
     background: rgba(15, 32, 39, 0.8); /* Se oscurece un poco al pasar el ratón */
 }
  
+.service-card-bg {
+    min-height: 350px; /* Establece una altura mínima para las tarjetas de servicio */
+}
+
 .service-card-bg:hover .card-img {
     filter: brightness(0.5); /* Oscurece la imagen al pasar el ratón para dar contraste */
 }
@@ -264,5 +268,83 @@ p {
         padding: 1rem; /* Reducimos el padding en móviles */
         overflow-y: auto; /* Añade scroll vertical solo si es necesario */
         height: 90%; /* Limita la altura para que el scroll funcione */
+    }
+}
+
+/* Mejora visual para los iconos de redes sociales en el footer */
+.social-link:hover {
+    color: #0d6efd !important;
+    transform: scale(1.2);
+    transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+
+/* Animación para la imagen de perfil */
+.profile-image {
+    width: 250px;
+    height: 270px;
+    object-fit: cover;
+    border: 3px solid #00fff789;
+    box-shadow: 0 0 25px #00fff755;
+    animation: pulse-glow 4s infinite ease-in-out, float-effect 6s infinite ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 40px #00fff7aa;
+    animation-play-state: paused; /* Pausa la animación de pulso al pasar el ratón */
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 25px #00fff755;
+    }
+    50% {
+        box-shadow: 0 0 40px #00fff7aa;
+    }
+    100% {
+        box-shadow: 0 0 25px #00fff755;
+    }
+}
+
+@keyframes float-effect {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Estilos para el carrusel de habilidades */
+.skills-carousel-container {
+    height: 200px; /* Altura fija para mostrar unos 3-4 elementos */
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem; /* Añade espacio entre el párrafo y la animación */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.skills-list {
+    /* La animación se define aquí */
+    animation: scroll-vertical 12s linear infinite;
+}
+
+.skills-carousel-container:hover .skills-list {
+    animation-play-state: paused; /* Pausa la animación al pasar el ratón */
+}
+
+@keyframes scroll-vertical {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        /* Se desplaza la mitad de la altura (la altura de la lista original) */
+        transform: translateY(-50%);
     }
 }
