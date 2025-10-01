@@ -1,0 +1,16 @@
+ {
+   "name": "ALV4R1CH - Servicios de Programación",
+   "short_name": "ALV4R1CH",
+   "description": "Desarrollador freelance especializado en diseño web moderno y automatización de procesos.",
+   "start_url": "/",
+   "display": "standalone",
+   "background_color": "#0f2027",
+   "theme_color": "#00fff7",
+   "icons": [
+     {
+       "src": "img/favicon.svg",
+       "sizes": "any",
+       "type": "image/svg+xml"
+     }
+   ]
+ }
