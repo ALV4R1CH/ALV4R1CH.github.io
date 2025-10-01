@@ -32,71 +32,69 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Configuración de particles.js
+    // tsParticles.load() es el reemplazo moderno de particlesJS()
     if (document.getElementById('particles-js')) {
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
+        tsParticles.load("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
                     }
                 },
-                "color": {
-                    "value": "#00fff7"
+                color: {
+                    value: "#00fff7"
                 },
-                "shape": {
-                    "type": "circle",
+                shape: {
+                    type: "circle",
                 },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
+                opacity: {
+                    value: 0.5,
+                    random: false,
                 },
-                "size": {
-                    "value": 3,
-                    "random": true,
+                size: {
+                    value: 3,
+                    random: true,
                 },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#00fff7",
-                    "opacity": 0.4,
-                    "width": 1
+                links: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00fff7",
+                    opacity: 0.4,
+                    width: 1
                 },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: "out",
                 }
             },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
+            interactivity: {
+                events: {
+                    onHover: {
+                        enable: true,
+                        mode: "repulse"
                     },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
+                    onClick: {
+                        enable: true,
+                        mode: "push"
                     },
-                    "resize": true
                 },
-                "modes": {
-                    "repulse": {
-                        "distance": 100,
-                        "duration": 0.4
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
                     },
-                    "push": {
-                        "particles_nb": 4
+                    push: {
+                        quantity: 4
                     }
                 }
             },
-            "retina_detect": true
+            detectRetina: true
         });
     }
 });
