@@ -271,14 +271,6 @@ p {
     }
 }
 
-/* Mejora visual para los iconos de redes sociales en el footer */
-.social-link:hover {
-    color: #0d6efd !important;
-    transform: scale(1.2);
-    transition: color 0.2s, transform 0.2s;
-    text-decoration: none;
-}
-
 /* Animación para la imagen de perfil */
 .profile-image {
     width: 250px;
